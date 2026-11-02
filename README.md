@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name: SANJAYKUMAR B  </h3>
+<h3>Register Number: 212224230242 </h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -67,6 +67,48 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 <li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
 
 </ol>
+
+# program 
+```
+from collections import deque, defaultdict
+
+def bfs(graph, start, visited, path):
+    queue = deque()
+    visited[start] = True
+    queue.append(start)
+
+    while queue:
+        node = queue.popleft()
+        path.append(node)
+
+        for neighbour in graph[node]:
+            if not visited[neighbour]:
+                visited[neighbour] = True
+                queue.append(neighbour)
+
+    return path
+
+
+graph = defaultdict(list)
+
+v, e = map(int, input().split())
+
+for i in range(e):
+    u, w = input().split()
+    graph[u].append(w)
+    graph[w].append(u)
+
+start = input()
+
+visited = defaultdict(bool)
+path = []
+
+traversedpath = bfs(graph, start, visited, path)
+
+print("BFS Traversal:", " -> ".join(traversedpath))
+```
+# output
+<img width="843" height="255" alt="image" src="https://github.com/user-attachments/assets/cd031e1c-e876-4f6f-b6e1-1d468eccff47" />
 
 <hr>
 <h3>Sample Input</h3>
